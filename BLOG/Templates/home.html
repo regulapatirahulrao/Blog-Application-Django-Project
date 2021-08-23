@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h2>POSTS</h2>
+
+
+{% for post in object_list %}
+ <div class="card text-dark bg-light mb-2" style="max-width: 35rem;" >
+
+      <div class="card-header" ><a href="{% url 'category' post.category|slugify %}"  class="text-decoration-none" > {{ post.category}}</a></div>
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'article-detail' post.pk %}" class="text-decoration-none">{{ post.tittle }}</a>-{{ post.author.first_name }}-{{ post.author.last_name }}</h5>
+          <p class="card-text"><small>{{ post.post_date }}</small> </br></br> {{ post.snippet }}</p>
+
+      </div>
+
+
+ </div>
+{% endfor %}
+{% endblock %}
